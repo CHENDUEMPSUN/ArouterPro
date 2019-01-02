@@ -1,0 +1,1 @@
+include ':app', ':lib_base', ':module_home', ':module_chat', ':module_recom', ':module_me'

@@ -1,0 +1,42 @@
+if (!isNeedRecomModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+android {
+    compileSdkVersion 28
+
+    dataBinding {
+        enabled = true
+    }
+    defaultConfig {
+        if (!isNeedRecomModule.toBoolean()) {
+            applicationId "com.example.module_recom"
+        }
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    api project(path: ':lib_base')
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+}
