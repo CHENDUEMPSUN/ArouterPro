@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # ArouterPro
 
 #### 项目介绍
